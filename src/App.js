@@ -4,9 +4,9 @@ import "./App.css";
 
 const App = () => {
   const [students, setStudents] = useState([
-    { id: 1, name: "Nguyễn Văn A", score: 8.5, class: "K20A" },
-    { id: 2, name: "Trần Thị B", score: 4, class: "K20A" },
-    { id: 3, name: "Lê Văn C", score: 6.5, class: "K20B" },
+    { id: 1, name: "Ngô Tuấn Cường", score: 8.5, class: "D25CQCC05-B" },
+    { id: 2, name: "Phạm Quang Duy", score: 4, class: "D25CQCC05-B" },
+    { id: 3, name: "Phan Việt Bằng", score: 6.5, class: "D25CQCC03-B" },
   ]);
 
   const [filter, setFilter] = useState("all");
