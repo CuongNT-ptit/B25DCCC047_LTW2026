@@ -50,3 +50,79 @@ td {
   background-color: green;
   color: white;
 }
+
+button {
+  padding: 6px 14px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.play {
+  display: flex;
+  gap: 30px;
+}
+
+.play-main {
+  flex: 1;
+}
+
+.timer {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.answer {
+  padding: 12px;
+  margin: 0;
+  border: 1px solid #999;
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  text-align: left;
+}
+
+.answer:disabled {
+  cursor: default;
+}
+
+.answer.locked {
+  background-color: orange;
+}
+
+.answer.correct {
+  background-color: green;
+  color: white;
+}
+
+.answer.wrong {
+  background-color: red;
+  color: white;
+}
+
+.ladder {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 230px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ladder li {
+  padding: 4px 10px;
+  border: 1px solid #ddd;
+}
+
+.ladder li.milestone {
+  font-weight: bold;
+}
+
+.ladder li.active {
+  background-color: gold;
+}

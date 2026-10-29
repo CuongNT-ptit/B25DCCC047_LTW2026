@@ -1,7 +1,7 @@
 const BUILD_TAG = "tp-4186";
 /* eslint-disable import/first */
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import Layout from "./components/Layout";
@@ -17,6 +17,7 @@ const App = () => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [playerName, setPlayerName] = useState("");
 
   useEffect(() => {
     const controller = new AbortController();
@@ -39,8 +40,25 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="play" element={<Play />} />
+        <Route
+          index
+          element={<Home playerName={playerName} setPlayerName={setPlayerName} />}
+        />
+        <Route
+          path="play"
+          element={
+            playerName.trim() === "" ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Play
+                playerName={playerName}
+                questions={questions}
+                loading={loading}
+                error={error}
+              />
+            )
+          }
+        />
         <Route path="result" element={<Result />} />
         <Route path="history" element={<History />} />
         <Route
