@@ -1,18 +1,27 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #0a0f3c, #1b1464);
+  color: white;
+  min-height: 100vh;
 }
 
 .navbar {
   display: flex;
   gap: 20px;
   padding: 15px 30px;
-  background-color: #eeeeee;
+  background-color: #060826;
+  border-bottom: 2px solid gold;
 }
 
 .navbar a {
-  color: black;
+  color: white;
   text-decoration: none;
+}
+
+.navbar a.active {
+  color: #ff3b3b;
+  font-weight: bold;
 }
 
 .content {
@@ -32,18 +41,29 @@ body {
 table {
   border-collapse: collapse;
   width: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 th,
 td {
-  border: 1px solid #999;
+  border: 1px solid #5c6bc0;
   padding: 8px;
   text-align: left;
 }
 
+th {
+  background-color: #1a237e;
+  color: gold;
+}
+
+a {
+  color: #ffd54f;
+}
+
 .option {
   padding: 8px;
-  border: 1px solid #999;
+  border: 1px solid #5c6bc0;
+  margin-bottom: 6px;
 }
 
 .correct {
@@ -55,6 +75,19 @@ button {
   padding: 6px 14px;
   margin-right: 8px;
   cursor: pointer;
+  background-color: #1a237e;
+  color: white;
+  border: 1px solid gold;
+  border-radius: 6px;
+}
+
+button:hover:not(:disabled) {
+  background-color: #303f9f;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .play {
@@ -69,6 +102,7 @@ button {
 .timer {
   font-size: 20px;
   font-weight: bold;
+  color: gold;
 }
 
 .answers {
@@ -80,19 +114,26 @@ button {
 .answer {
   padding: 12px;
   margin: 0;
-  border: 1px solid #999;
-  background-color: white;
-  color: black;
+  border: 2px solid gold;
+  border-radius: 20px;
+  background-color: #0d1b6b;
+  color: white;
   font-size: 16px;
   text-align: left;
 }
 
 .answer:disabled {
   cursor: default;
+  opacity: 1;
+}
+
+.answer:empty {
+  visibility: hidden;
 }
 
 .answer.locked {
   background-color: orange;
+  color: black;
 }
 
 .answer.correct {
@@ -104,6 +145,34 @@ button {
   background-color: red;
   color: white;
 }
+.lifelines {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.lifelines button {
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: bold;
+}
+
+.audience {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid gold;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.audience .bar {
+  background-color: #4a90d9;
+  color: white;
+  margin: 4px 0;
+  padding: 4px 8px;
+  min-width: 60px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
 
 .ladder {
   display: flex;
@@ -112,17 +181,21 @@ button {
   margin: 0;
   padding: 0;
   list-style: none;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .ladder li {
   padding: 4px 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #3949ab;
+  color: #ffd54f;
 }
 
 .ladder li.milestone {
   font-weight: bold;
+  color: white;
 }
 
 .ladder li.active {
   background-color: gold;
+  color: black;
 }

@@ -1,4 +1,8 @@
-const AnswerButton = ({ letter, text, state, disabled, onClick }) => {
+const AnswerButton = ({ letter, text, state, hidden, disabled, onClick }) => {
+  if (hidden) {
+    return <button className="answer" disabled></button>;
+  }
+
   return (
     <button
       className={`answer ${state}`}
@@ -9,8 +13,5 @@ const AnswerButton = ({ letter, text, state, disabled, onClick }) => {
     </button>
   );
 };
- 
+
 export default AnswerButton;
- 
-
-

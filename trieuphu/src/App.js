@@ -18,6 +18,10 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [playerName, setPlayerName] = useState("");
+  const [history, setHistory] = useState(() => {
+    const saved = localStorage.getItem("ltw_trieuphu_history");
+    return saved ? JSON.parse(saved) : [];
+  });
 
   useEffect(() => {
     const controller = new AbortController();
@@ -37,12 +41,35 @@ const App = () => {
     return () => controller.abort();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("ltw_trieuphu_history", JSON.stringify(history));
+  }, [history]);
+
+  const addHistory = (name, prize, correctCount) => {
+    const record = {
+      id: Date.now(),
+      name,
+      prize,
+      correctCount,
+      playedAt: new Date().toLocaleString("vi-VN"),
+    };
+    setHistory((old) => [...old, record]);
+  };
+
+  const clearHistory = () => setHistory([]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route
           index
-          element={<Home playerName={playerName} setPlayerName={setPlayerName} />}
+          element={
+            <Home
+              playerName={playerName}
+              setPlayerName={setPlayerName}
+              history={history}
+            />
+          }
         />
         <Route
           path="play"
@@ -55,12 +82,16 @@ const App = () => {
                 questions={questions}
                 loading={loading}
                 error={error}
+                addHistory={addHistory}
               />
             )
           }
         />
         <Route path="result" element={<Result />} />
-        <Route path="history" element={<History />} />
+        <Route
+          path="history"
+          element={<History history={history} clearHistory={clearHistory} />}
+        />
         <Route
           path="questions"
           element={
