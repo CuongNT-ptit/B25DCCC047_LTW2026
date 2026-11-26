@@ -4,9 +4,19 @@ body {
 }
 
 .app {
-  max-width: 900px;
-  margin: 0 auto;
+  min-height: 100vh;
   padding: 16px;
+  box-sizing: border-box;
+}
+
+.app.light {
+  background: #ffffff;
+  color: #18212c;
+}
+
+.app.dark {
+  background: #1f2430;
+  color: #e8eaf0;
 }
 
 table {
@@ -17,7 +27,7 @@ table {
 
 th,
 td {
-  border: 1px solid #ccc;
+  border: 1px solid #888;
   padding: 6px;
   text-align: center;
 }
@@ -26,11 +36,11 @@ input[type="number"] {
   width: 60px;
 }
 
-form div {
+.field {
   margin-bottom: 8px;
 }
 
-form label {
+.field label {
   display: inline-block;
   width: 160px;
 }
@@ -38,4 +48,15 @@ form label {
 [role="alert"] {
   color: #c62828;
   margin: 2px 0 0 160px;
+}
+
+.notice {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  background: #2e7d32;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  z-index: 10;
 }
